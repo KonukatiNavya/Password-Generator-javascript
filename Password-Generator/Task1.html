@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Password Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: rgb(228, 228, 100);
+    }
+    #password {
+        font-size: 1.2em;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    #generate-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #generate-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<h1>Random Password Generator</h1>
+
+<input type="text" id="password" readonly>
+<button id="generate-btn">Generate Password</button>
+
+<script>
+    // Function to generate random password
+    function generatePassword() {
+        const length = 12; 
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-="; 
+        let password = "";
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        return password;
+    }
+
+    function displayPassword() {
+        const passwordInput = document.getElementById('password');
+        passwordInput.value = generatePassword();
+    }
+
+   
+    document.getElementById('generate-btn').addEventListener('click', displayPassword);
+</script>
+
+</body>
+</html>
